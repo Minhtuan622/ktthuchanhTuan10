@@ -1,0 +1,18 @@
+<?php
+require 'database.php';
+$masua = ($_GET['masua'] !== null && (int)$_GET['masua'] > 0)? mysqli_real_escape_string($db, (int)$_
+GET['masua']) : false;
+if(!$masua)
+{
+return http_response_code(400);
+}
+$sql = "DELETE FROM products WHERE masua =$masua";
+if($db->query($sql))
+{
+http_response_code(204);
+}
+else
+{
+return http_response_code(422);
+}
+?>

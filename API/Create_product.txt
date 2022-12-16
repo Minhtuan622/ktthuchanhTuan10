@@ -1,0 +1,35 @@
+<?php
+include 'database.php';
+$postdata = file_get_contents("php://input");
+if(isset($postdata) && !empty($postdata))
+{
+$request = json_decode($postdata,true);
+// Validate.
+if((int)$request['masua'] < 0 || trim($request['tensua']) === '' || trim($request['trongluong']) === '' || trim($request['dongia']) === '' || (int)$request['maloai'] < 0)
+{
+return http_response_code(400);
+}
+$masua = mysqli_real_escape_string($db, trim($request['masua']));
+$tensua = mysqli_real_escape_string($db, (int)$request['tensua']);
+$trongluong = mysqli_real_escape_string($db, (int)$request['trongluong']);
+$dongia = mysqli_real_escape_string($db, (int)$request['dongia']);
+$maloai = mysqli_real_escape_string($db, (int)$request['maloai']);
+$sql = "INSERT INTO products (masua,tensua,trongluong,dongia,maloai) VALUES (null,'$tensua',$trongluong, $dongia, $maloai)";
+if($db->query($sql))
+{
+http_response_code(201);
+$sua = [
+'masua' => mysqli_insert_id($db),
+'tensua' => $tensua,
+'trongluong' => $trongluong,
+'dongia' => $dongia,
+'maloai' => $maloai
+];
+echo json_encode($sua);
+}
+else
+{
+http_response_code(422);
+}
+}
+?>
