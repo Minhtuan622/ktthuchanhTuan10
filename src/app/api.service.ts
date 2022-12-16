@@ -16,7 +16,7 @@ export class ApiService {
     return this.httpClient.get<Sua[]>(`${this.PHP_API_SERVER}/index.php`);
   }
 
-  createProduct(product: Sua): Observable<sua> {
+  createProduct(product: Sua): Observable<Sua> {
     return this.httpClient.post<Sua>(`${this.PHP_API_SERVER}/create_product.php`, product);
   }
 
@@ -25,6 +25,6 @@ export class ApiService {
   }
 
   deleteProduct(id: number) {
-    return this.httpClient.delete<Sua>(`${this.PHP_API_SERVER}/delete_product.php/?id=${masua}`);
+    return this.httpClient.delete<Sua>(`${this.PHP_API_SERVER}/delete_product.php/?id=${id}`);
   }
 }

@@ -8,15 +8,15 @@ import {Sua} from '../sua';
 })
 export class ThemGiaoVienComponent implements OnInit {
 
-  products: Sua[];
-  selectedProduct: Sua = { masua : null , tensua: null, trongluong: null, dongia: null, maloai: null}
+  products: Sua[] = [];
+  selectedProduct: Sua = { masua : 0 , tensua: '', trongluong: '', dongia: '', maloai: 0}
   constructor(private apiService: ApiService) {
     this.apiService.readProducts().subscribe((products: Sua[])=>{
       this.products = products;
       console.log(this.products);
     }) }
 
-  createOrUpdateProduct(form){
+  createOrUpdateProduct(form: any){
     form.value.masua = this.selectedProduct.masua;
     form.value.tensua = this.selectedProduct.tensua;
     form.value.trongluong = this.selectedProduct.trongluong;
@@ -42,7 +42,7 @@ export class ThemGiaoVienComponent implements OnInit {
   selectProduct(product: Sua){
     this.selectedProduct = product;
   }
-  deleteProduct(masua){
+  deleteProduct(masua: any){
     this.apiService.deleteProduct(masua).subscribe((product: Sua)=>{
       console.log("Product deleted, ", product);
       this.apiService.readProducts().subscribe((products: Sua[])=>{

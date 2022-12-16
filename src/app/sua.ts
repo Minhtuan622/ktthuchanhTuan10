@@ -1,4 +1,4 @@
-export class Sua {
+export interface Sua {
   masua: number;
   tensua: string;
   trongluong: string;
