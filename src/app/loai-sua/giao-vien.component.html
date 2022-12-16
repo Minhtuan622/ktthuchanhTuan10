@@ -1,0 +1,30 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let gv of giaovien">
+    <div class="card">
+      <div class="card-body">
+        <table>
+          <tr>
+            <th>Mã Sữa</th>
+            <td>{{gv.magv}}</td>
+          </tr>
+          <tr>
+            <th>Tên Sữa</th>
+            <td>{{gv.hovaten}}</td>
+          </tr>
+          <tr>
+            <th>Trọng lượng</th>
+            <td>{{gv.gioitinh}}</td>
+          </tr>
+          <tr>
+            <th>Đơn giá</th>
+            <td>{{gv.sdt}}</td>
+          </tr>
+          <tr>
+            <th>Tên loại</th>
+            <td>{{gv.diachi}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

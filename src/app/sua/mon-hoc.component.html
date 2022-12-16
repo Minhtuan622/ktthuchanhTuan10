@@ -1,0 +1,12 @@
+<table class="table table-bordered">
+  <tr>
+    <th>Mã loại sữa</th>
+    <th>Tên loại sữa</th>
+    <th>Hình loại sữa</th>
+  </tr>
+  <tr *ngFor="let mh of loaisua">
+    <td>{{mh.ma}}</td>
+    <td>{{mh.tensua}}</td>
+    <td><img src="{{mh.hinh}}" height="100" width="200"></td>
+  </tr>
+</table>
